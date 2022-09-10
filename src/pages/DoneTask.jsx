@@ -45,12 +45,16 @@ const DoneTask = () => {
     const getToken = localStorage.getItem('token');
     const token = JSON.parse(getToken);
 
-    getFetch(token, url).then((data) => {
-      if (data.message === 'Token Expired') {
-        navigate('/login');
-      }
-      setTasks(data.result);
-    });
+    getFetch(token, url)
+      .then((data) => {
+        if (data.message === 'Token Expired') {
+          navigate('/login');
+        }
+        setTasks(data.result);
+      })
+      .catch((error) => {
+        alert(error);
+      });
   };
 
   return (
