@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const routes = require('./routes/route');
-const path = require('path');
 const cors = require('cors');
 
 dotenv.config();
@@ -16,17 +15,25 @@ app.use(express.json());
 app.use(cors());
 routes(app);
 
-app.use(express.static(path.join(__dirname, '../frontEnd/build')));
+app.use(express.static('public'));
 
-app.get('*', function (_, res) {
-  res.sendFile(
-    path.join(__dirname, '../frontEnd/build/index.html'),
-    function (err) {
-      if (err) {
-        res.status(500).send(err);
-      }
-    }
-  );
+app.get('/', (req, res) => {
+  res.sendFile('index.html', { root: path.join(__dirname, 'public') });
 });
 
+// app.use(express.static(path.join(__dirname, '../frontEnd/build')));
+
+// app.get('*', function (_, res) {
+//   res.sendFile(
+//     path.join(__dirname, '../frontEnd/build/index.html'),
+//     function (err) {
+//       if (err) {
+//         res.status(500).send(err);
+//       }
+//     }
+//   );
+// });
+
 app.listen(4000, () => console.log('Server is listening......'));
+
+module.exports = app;

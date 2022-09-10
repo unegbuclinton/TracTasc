@@ -37,7 +37,7 @@ module.exports = function (app) {
 
   app.route('/app/tasks/:id').delete(deleteTask);
 
-  app.route('/').get(getRes);
+  // app.route('/').get(getRes);
 
   app.route('/:id').get(singleUser);
 

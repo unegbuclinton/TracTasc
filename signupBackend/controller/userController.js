@@ -5,6 +5,7 @@ const {
   getOneData,
   deleteData,
 } = require('../services/authServices');
+const path = require('path');
 
 module.exports.createUser = (req, res) => {
   const createUser = req.body;
@@ -18,9 +19,9 @@ module.exports.loginUser = (req, res) => {
   loginUser(loginData, res);
 };
 
-module.exports.getRes = async (req, res) => {
-  getUserData(res);
-};
+// module.exports.getRes = async (req, res) => {
+//   getUserData(res);
+// };
 
 module.exports.singleUser = async (req, res) => {
   getOneData(req, res);
