@@ -1,0 +1,23 @@
+GET  http://localhost:4000/app/dayTasks
+
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTBhYzA3M2UxYzNkNGMyMDA0MDA2NiIsImlhdCI6MTY2MjI4MjkyOCwiZXhwIjoxNjYyMjg2NTI4fQ.b-cvHRFhz0KZZf8JCWfN7gm__uE2u0zXRPmBYP4Dppc
+
+
+
+# {
+#     "task": "Date Task",
+#     "description": "Get date to work",
+#     "date": "2000-09-05"
+# }
+
+
+# {
+#     "email": "sam@skraggle.test",
+#     "password": "123456"
+# }
+
+# {    
+#     "email": "me@test.com",
+#     "password": "HelloWorld"
+# }

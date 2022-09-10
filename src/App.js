@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import DoneTask from './pages/DoneTask';
+import LandingPage from './pages/LandingPage';
+import Login from './pages/Login';
+import NoRoute from './pages/NoRoute';
+import OnePage from './pages/OnePage';
+import Registration from './pages/Registration';
+import TaskHistory from './pages/TaskHistory';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Routes>
+          <Route index element={<LandingPage />} />
+          <Route path="/home" element={<OnePage />} />
+          <Route path="/register" element={<Registration />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="history" element={<TaskHistory />} />
+          <Route path="done" element={<DoneTask />} />
+          <Route path="*" element={<NoRoute />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
