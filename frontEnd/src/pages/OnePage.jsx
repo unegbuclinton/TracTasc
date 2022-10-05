@@ -28,8 +28,8 @@ const OnePage = () => {
   const [doneTasks, setDoneTasks] = useState();
   const [open, setOpen] = useState(false);
 
-  const url = 'http://localhost:4000/app/dayTasks';
-  const donrUrl = ' http://localhost:4000/app/dayDoneTasks';
+  const url = 'https://trac-trac.vercel.app/app/dayTasks';
+  const donrUrl = ' https://trac-trac.vercel.app/app/dayDoneTasks';
   const navigate = useNavigate();
 
   useEffect(() => {

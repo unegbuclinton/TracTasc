@@ -22,8 +22,8 @@ const AddTask = ({ onClose }) => {
     validationSchema: formSchema,
 
     onSubmit: (values) => {
-      const url = 'http://localhost:4000/app/task';
-      const historyUrl = 'http://localhost:4000/app/tasks';
+      const url = 'https://trac-trac.vercel.app/app/task';
+      const historyUrl = 'https://trac-trac.vercel.app/app/tasks';
       const data = {
         task: values.task,
         description: values.desc,

@@ -25,7 +25,7 @@ const DoneTask = () => {
   const [tasks, setTasks] = useState();
   const [open, setOpen] = useState(false);
 
-  const url = 'http://localhost:4000/app/doneTasks';
+  const url = 'https://trac-trac.vercel.app/app/doneTasks';
 
   useEffect(() => {
     setLoading(true);

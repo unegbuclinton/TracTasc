@@ -12,7 +12,7 @@ import { loginSchema } from '../validation/Schema';
 
 const Login = () => {
   const [errorMsg, setErrorMsg] = useState('');
-  const url = 'http://localhost:4000/app/login';
+  const url = 'https://trac-trac.vercel.app/app/login';
 
   const logUser = async (data) => {
     try {
@@ -26,7 +26,7 @@ const Login = () => {
 
       return response.json();
     } catch (error) {
-      alert(error);
+      return error;
     }
   };
 

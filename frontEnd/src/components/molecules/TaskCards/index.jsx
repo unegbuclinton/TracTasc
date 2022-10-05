@@ -19,7 +19,7 @@ const TaskCards = ({ data, onClose }) => {
   const deleteTask = () => {
     const getToken = localStorage.getItem('token');
     const token = JSON.parse(getToken);
-    const url = `http://localhost:4000/app/tasks/${id}`;
+    const url = `https://trac-trac.vercel.app/app/tasks/${id}`;
     delFunc(token, url).then(() => {
       onClose();
       toast('Task deleted Sucessfully');
@@ -41,7 +41,7 @@ const TaskCards = ({ data, onClose }) => {
   const updateTaskFunc = () => {
     const getToken = localStorage.getItem('token');
     const token = JSON.parse(getToken);
-    const url = `http://localhost:4000/app/tasks/${id}`;
+    const url = `https://trac-trac.vercel.app/app/tasks/${id}`;
     const data = {
       status: true,
     };

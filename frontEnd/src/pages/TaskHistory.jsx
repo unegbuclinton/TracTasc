@@ -17,7 +17,7 @@ const TaskHistory = () => {
   const [open, setOpen] = useState(false);
   const [tasks, setTasks] = useState();
 
-  const url = 'http://localhost:4000/app/tasks';
+  const url = 'https://trac-trac.vercel.app/app/tasks';
 
   const navigate = useNavigate();
   useEffect(() => {

@@ -11,7 +11,7 @@ import { DPIconRegisterLogo } from '../icons/indxe';
 import { registrationSchema } from '../validation/Schema';
 
 const Registration = () => {
-  const url = 'http://localhost:4000/app/signup';
+  const url = 'https://trac-trac.vercel.app/app/signup';
 
   const createUser = async (data) => {
     const response = await fetch(url, {
