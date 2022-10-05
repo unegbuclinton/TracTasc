@@ -1,5 +1,6 @@
 import { useFormik } from 'formik';
 import React from 'react';
+import toast from 'react-hot-toast';
 import styled from 'styled-components';
 import { COLORS } from '../../../constants/colors';
 import { addTask, getFetch } from '../../../func';
@@ -30,6 +31,7 @@ const AddTask = ({ onClose }) => {
       };
       addTask(data, url, token).then(() => {
         onClose();
+        toast.success('Task added Sucessfully');
         getFetch(token, historyUrl);
       });
     },

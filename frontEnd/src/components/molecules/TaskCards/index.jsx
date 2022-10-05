@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import styled from 'styled-components';
 import { COLORS } from '../../../constants/colors';
 import { FONTSIZES, FONTWEIGHT } from '../../../constants/fonts';
@@ -21,12 +22,14 @@ const TaskCards = ({ data, onClose }) => {
     const url = `http://localhost:4000/app/tasks/${id}`;
     delFunc(token, url).then(() => {
       onClose();
+      toast('Task deleted Sucessfully');
       setDelModal(false);
     });
   };
 
   const setDel = (id) => {
     setId(id);
+
     setDelModal(true);
   };
 
@@ -44,6 +47,7 @@ const TaskCards = ({ data, onClose }) => {
     };
     updateTask(data, url, token).then(() => {
       onClose();
+      toast.success('Task pushed to done');
       setDoneModal(false);
     });
   };

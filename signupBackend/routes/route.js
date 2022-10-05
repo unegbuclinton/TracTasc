@@ -1,4 +1,5 @@
 const authenticate = require('../middlewares/authenticate.');
+const lowerCaseConverter = require('../middlewares/dataCase');
 
 module.exports = function (app) {
   const {
@@ -19,9 +20,9 @@ module.exports = function (app) {
     getDoneTasks,
   } = require('../controller/taskController');
 
-  app.route('/app/signup').post(createUser);
+  app.route('/app/signup').post(lowerCaseConverter, createUser);
 
-  app.route('/app/login').post(loginUser);
+  app.route('/app/login').post(lowerCaseConverter, loginUser);
 
   app.route('/app/task').post(authenticate, createTask);
 

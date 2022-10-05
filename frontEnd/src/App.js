@@ -1,3 +1,4 @@
+import { Toaster } from 'react-hot-toast';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import DoneTask from './pages/DoneTask';
 import LandingPage from './pages/LandingPage';
@@ -21,6 +22,7 @@ function App() {
           <Route path="*" element={<NoRoute />} />
         </Routes>
       </Router>
+      <Toaster />
     </div>
   );
 }

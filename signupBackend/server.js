@@ -8,7 +8,7 @@ dotenv.config();
 mongoose.connect(process.env.DATA_BASE_ACCESS, () =>
   console.log('Database connected')
 );
-
+const PORT = process.env.PORT || 4000;
 const app = express();
 
 app.use(express.json());
@@ -34,6 +34,6 @@ app.get('/', (req, res) => {
 //   );
 // });
 
-app.listen(4000, () => console.log('Server is listening......'));
+app.listen(PORT, () => console.log('Server is listening......'));
 
 module.exports = app;

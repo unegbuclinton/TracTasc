@@ -13,26 +13,32 @@ module.exports.createUserData = (createUser, res) => {
       return;
     }
 
-    const signedUpUser = new signUpTemplate({
-      firstName: createUser.firstName,
-      lastName: createUser.lastName,
-      email: createUser.email,
-      password: hassPassword,
+    signUpTemplate.findOne({ email: createUser.email }).then((user) => {
+      if (user) {
+        res.json({ message: 'User already exist' });
+      } else {
+        const signedUpUser = new signUpTemplate({
+          firstName: createUser.firstName,
+          lastName: createUser.lastName,
+          email: createUser.email,
+          password: hassPassword,
+        });
+        signedUpUser
+          .save()
+          .then((user) => {
+            res.json({
+              user,
+              message: 'User added sucessfully',
+            });
+          })
+          .catch((err) => {
+            res.json({
+              err,
+              error: 'An error occured',
+            });
+          });
+      }
     });
-    signedUpUser
-      .save()
-      .then((user) => {
-        res.json({
-          user,
-          message: 'User added sucessfully',
-        });
-      })
-      .catch((err) => {
-        res.json({
-          err,
-          error: 'An error occured',
-        });
-      });
   });
 };
 
