@@ -58,7 +58,7 @@ const SidebarWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 5.5rem;
+  gap: 1.5rem;
 
   .logout-wrapper {
     display: flex;
@@ -101,7 +101,7 @@ const SidebarContainer = styled.div`
     gap: 1rem;
     text-decoration: none;
     font-size: ${FONTSIZES.lg};
-    margin-bottom: 4.5rem;
+    margin-bottom: 0.5rem;
     color: ${COLORS.seashell};
     padding: 1.5rem 0 1.5rem 1.2rem;
 
@@ -111,7 +111,7 @@ const SidebarContainer = styled.div`
       gap: 1rem;
       text-decoration: none;
       font-size: ${FONTSIZES.lg};
-      margin-bottom: 4.5rem;
+      margin-bottom: 0.5rem;
       color: ${COLORS.seashell};
       padding: 1.5rem 0 1.5rem 1.2rem;
       background-color: ${COLORS.frosbite};

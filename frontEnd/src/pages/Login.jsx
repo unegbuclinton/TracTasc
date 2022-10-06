@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../components/atoms/button';
 import InputField from '../components/atoms/input';
+import Spinner from '../components/atoms/spinner';
 import ErrorMessage from '../components/molecules/errorMessage';
 import { COLORS } from '../constants/colors';
 import { FONTSIZES, FONTWEIGHT } from '../constants/fonts';
@@ -12,6 +13,7 @@ import { loginSchema } from '../validation/Schema';
 
 const Login = () => {
   const [errorMsg, setErrorMsg] = useState('');
+  const [loading, setLoading] = useState(false);
   const url = 'https://trac-trac.vercel.app/app/login';
 
   const logUser = async (data) => {
@@ -40,6 +42,7 @@ const Login = () => {
     validationSchema: loginSchema,
 
     onSubmit: (values) => {
+      setLoading(true);
       const data = {
         email: values.userName,
         password: values.password,
@@ -55,6 +58,7 @@ const Login = () => {
           localStorage.setItem('token', JSON.stringify(token));
           navigate('/home');
         }
+        setLoading(false);
       });
     },
   });
@@ -93,8 +97,8 @@ const Login = () => {
         {formik.touched.password && formik.errors.password ? (
           <ErrorMessage>{formik.errors.password}</ErrorMessage>
         ) : null}
-        <Button type="submit" className="login-btn">
-          Sign In
+        <Button type="submit" disabled={loading} className="login-btn">
+          {loading ? <Spinner /> : 'Sign In'}
         </Button>
         <LoginHint>Forgot Password ? </LoginHint>
         <LoginHint>

@@ -15,6 +15,7 @@ module.exports.createUserData = (createUser, res) => {
 
     signUpTemplate.findOne({ email: createUser.email }).then((user) => {
       if (user) {
+        res.status(403);
         res.json({ message: 'User already exist' });
       } else {
         const signedUpUser = new signUpTemplate({

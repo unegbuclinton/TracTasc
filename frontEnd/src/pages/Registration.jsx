@@ -1,9 +1,11 @@
 import { useFormik } from 'formik';
-import React from 'react';
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../components/atoms/button';
 import InputField from '../components/atoms/input';
+import Spinner from '../components/atoms/spinner';
 import ErrorMessage from '../components/molecules/errorMessage';
 import { COLORS } from '../constants/colors';
 import { FONTSIZES, FONTWEIGHT } from '../constants/fonts';
@@ -12,6 +14,8 @@ import { registrationSchema } from '../validation/Schema';
 
 const Registration = () => {
   const url = 'https://trac-trac.vercel.app/app/signup';
+
+  const [loading, setLoading] = useState(false);
 
   const createUser = async (data) => {
     const response = await fetch(url, {
@@ -35,6 +39,7 @@ const Registration = () => {
     },
     validationSchema: registrationSchema,
     onSubmit: (values) => {
+      setLoading(true);
       const data = {
         firstName: values.firstName,
         lastName: values.lastName,
@@ -42,12 +47,17 @@ const Registration = () => {
         password: values.password,
       };
 
-      createUser(data).then((data) => {
-        const sucess = data.statusText;
-        if (sucess === 'OK') {
-          navigate('/login');
-        }
-      });
+      createUser(data)
+        .then((data) => data.json())
+        .then((res) => {
+          if (res.message === 'User already exist') {
+            toast.error(res.message);
+          } else {
+            toast.success(res.message);
+            navigate('/login');
+          }
+          setLoading(false);
+        });
     },
   });
   return (
@@ -106,8 +116,8 @@ const Registration = () => {
         {formik.touched.password && formik.errors.password ? (
           <ErrorMessage>{formik.errors.password}</ErrorMessage>
         ) : null}
-        <Button type="submit" className="signUp-btn">
-          Sign Up
+        <Button type="submit" disabled={loading} className="signUp-btn">
+          {loading ? <Spinner /> : 'Sign Up'}
         </Button>
         <RegisterHint>
           Already have an account ?{' '}

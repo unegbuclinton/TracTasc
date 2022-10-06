@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import React from 'react';
+import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import styled from 'styled-components';
 import { COLORS } from '../../../constants/colors';
@@ -7,9 +7,11 @@ import { addTask, getFetch } from '../../../func';
 import { formSchema } from '../../../validation/Schema';
 import Button from '../../atoms/button';
 import InputField from '../../atoms/input';
+import Spinner from '../../atoms/spinner';
 import ErrorMessage from '../errorMessage';
 
 const AddTask = ({ onClose }) => {
+  const [loading, setLoading] = useState(false);
   const getToken = localStorage.getItem('token');
   const token = JSON.parse(getToken);
 
@@ -22,6 +24,7 @@ const AddTask = ({ onClose }) => {
     validationSchema: formSchema,
 
     onSubmit: (values) => {
+      setLoading(true);
       const url = 'https://trac-trac.vercel.app/app/task';
       const historyUrl = 'https://trac-trac.vercel.app/app/tasks';
       const data = {
@@ -71,8 +74,8 @@ const AddTask = ({ onClose }) => {
       {formik.touched.date && formik.errors.date ? (
         <ErrorMessage>{formik.errors.date}</ErrorMessage>
       ) : null}
-      <Button type="submit" className="task-btn">
-        Add Task
+      <Button type="submit" disabled={loading} className="task-btn">
+        {loading ? <Spinner /> : ' Add Task'}
       </Button>
     </TaskWrapper>
   );
