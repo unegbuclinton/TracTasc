@@ -61,6 +61,7 @@ const Input = styled.input`
   padding-left: 0.8rem;
   margin-bottom: 0.6rem;
   padding-bottom: 0.5rem;
+  font-size: 1.6rem;
 `;
 
 const InputFieldIcon = styled.div`

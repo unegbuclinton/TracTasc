@@ -9,10 +9,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Roboto', sans-serif;
     }
 
-    * {
- -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-}
+ 
     html {
         font-size: 62.5%;
     }
