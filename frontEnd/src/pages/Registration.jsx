@@ -43,6 +43,7 @@ const Registration = () => {
       };
 
       createUser(data).then((data) => {
+        console.log(data);
         const sucess = data.statusText;
         if (sucess === 'OK') {
           navigate('/login');
