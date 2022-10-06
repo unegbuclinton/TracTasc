@@ -15,10 +15,7 @@ import Modal from '../layout/modal';
 
 const TaskCards = React.lazy(() => {
   return new Promise((resolve) => {
-    setTimeout(
-      () => resolve(import('../components/molecules/TaskCards')),
-      1000
-    );
+    setTimeout(() => resolve(import('../components/molecules/TaskCards')), 500);
   });
 });
 
